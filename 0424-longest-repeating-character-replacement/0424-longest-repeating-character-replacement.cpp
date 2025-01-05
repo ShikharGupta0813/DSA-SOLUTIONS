@@ -8,11 +8,11 @@ public:
             freqs[s[j]]++;
             maxFreq = max(maxFreq, freqs[s[j]]);
 
-            while ((j - i + 1) - maxFreq > k) {
+            if ((j - i + 1) - maxFreq > k) {
                 freqs[s[i]]--;
                 i++;
             }
-
+            if((j - i + 1) - maxFreq <= k)
             res = max(res, j - i + 1);
         }
 
