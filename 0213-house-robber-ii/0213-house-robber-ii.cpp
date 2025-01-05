@@ -3,6 +3,9 @@ class Solution {
         if (start > end) {
             return 0; // No house to rob
         }
+        if(start==end){
+            return nums[end];
+        }
         if (dp[start] != -1) {
             return dp[start]; // Return already computed value
         }
