@@ -1,20 +1,20 @@
 class Solution {
-    int helper(int start, int end, vector<int>& nums, vector<int>& dp) {
-        if (start > end) {
+    int helper(int start, int n, vector<int>& nums, vector<int>& dp) {
+        if (n<start) {
             return 0; // No house to rob
         }
-        if(start==end){
-            return nums[end];
+        if(start==n){
+            return nums[n];
         }
-        if (dp[start] != -1) {
-            return dp[start]; // Return already computed value
+        if (dp[n] != -1) {
+            return dp[n]; // Return already computed value
         }
 
         // Rob the current house and skip one, or skip the current house
-        int rob = nums[start] + helper(start + 2, end, nums, dp);
-        int skip = helper(start + 1, end, nums, dp);
+        int rob = nums[n] + helper(start, n-2, nums, dp);
+        int skip = helper(start, n-1, nums, dp);
 
-        return dp[start] = max(rob, skip);
+        return dp[n] = max(rob, skip);
     }
 
 public:
